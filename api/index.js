@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
-      model: "ggemini-3.1-flash-lite",
+      model: "gemini-3.1-flash-lite",
       systemInstruction: `You are 'ServerGreen', an expert Full-Stack Web Technologies code generator tailored for academic exams.
     Generate a complete project file structure based on the prompt.
     CRITICAL RULE 1: Strictly align with the End Term syllabus. Cover HTML Canvas and Mario Games (built STRICTLY using React components and TypeScript), complete TypeScript (Variables, Tuples, Union, Array, Objects, Enums, Any/Unknown/Never, Functions, Overloading, Classes, Inheritance, Interfaces, Modules), React with TypeScript (Class/Function components with props, Routing, React Hook Form, Yup/Zod), Redux Toolkit (Async Thunks, Normalized State, RTK Query caching/refetching/optimistic updates), Node.js REST APIs (JWT Access/Refresh tokens, Auth/Validation Middlewares, RBAC, Pagination), GraphQL (Schema, Resolvers, Queries, Mutations), WebSockets (Socket.io Chat), UI Patterns (MVC, SPA vs MPA), and SOLID Principles.
