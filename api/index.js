@@ -11,13 +11,13 @@ export default async function handler(req, res) {
   try {
     const { prompt } = req.body;
     const apiKey = process.env.GEMINI_API_KEY;
-    
+
     if (!apiKey) return res.status(500).json({ error: "Server API Key missing" });
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ 
-        model: "gemini-3.1-flash-lite",
-        systemInstruction: `You are 'ServerGreen', an expert Full-Stack Web Technologies code generator tailored for academic exams.
+    const model = genAI.getGenerativeModel({
+      model: "ggemini-3.1-flash-lite",
+      systemInstruction: `You are 'ServerGreen', an expert Full-Stack Web Technologies code generator tailored for academic exams.
     Generate a complete project file structure based on the prompt.
     CRITICAL RULE 1: Strictly align with the End Term syllabus. Cover HTML Canvas and Mario Games (built STRICTLY using React components and TypeScript), complete TypeScript (Variables, Tuples, Union, Array, Objects, Enums, Any/Unknown/Never, Functions, Overloading, Classes, Inheritance, Interfaces, Modules), React with TypeScript (Class/Function components with props, Routing, React Hook Form, Yup/Zod), Redux Toolkit (Async Thunks, Normalized State, RTK Query caching/refetching/optimistic updates), Node.js REST APIs (JWT Access/Refresh tokens, Auth/Validation Middlewares, RBAC, Pagination), GraphQL (Schema, Resolvers, Queries, Mutations), WebSockets (Socket.io Chat), UI Patterns (MVC, SPA vs MPA), and SOLID Principles.
     CRITICAL RULE 2: ABSOLUTELY NO PYTHON AND NO PLAIN JAVASCRIPT (.js). ALL code MUST be strictly written in TypeScript (.ts, .tsx). Generate Node.js Backend code ONLY when the prompt asks for backend, APIs, server-side logic, or database operations.
@@ -34,9 +34,9 @@ export default async function handler(req, res) {
     const endIndex = text.lastIndexOf(']') + 1;
 
     if (startIndex !== -1 && endIndex !== -1) {
-        text = text.substring(startIndex, endIndex);
+      text = text.substring(startIndex, endIndex);
     }
-    
+
     const files = JSON.parse(text);
     return res.status(200).json({ files: files });
 
